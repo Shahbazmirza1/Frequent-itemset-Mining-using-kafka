@@ -11,17 +11,15 @@ This repository contains the code and documentation for a streaming data analysi
 The Amazon Metadata dataset provides rich information about products, including attributes such as product ID (`asin`), title, features, description, price, image URLs, related products, sales rank, brand, categories, and technical details. The dataset is provided in JSON format.
 
 ## Data Preprocessing
-Provided consumer script (consumerPreprocess.py) performs preprocessing and stores the data into a MongoDB database named amazonDB. The preprocessing steps include:
-- Removing specific columns (e.g., "description", "price", "imageURL") from the dataset.
-- Cleaning HTML tags and JavaScript content from text fields.
-- Normalizing and preparing the data for storage in MongoDB.
-
-1. consumerPreprocess.py utilizes a Kafka consumer to ingest data from the amazon_data topic, preprocesses each message, and stores the processed data into MongoDB. This real-time processing pipeline ensures that the dataset remains up-to-date and ready for further analysis and - insights extraction.
+1. consumerPreprocess.py utilizes a Kafka consumer to ingest data from the amazon_data topic, preprocesses each message, and stores the processed data into MongoDB. This real-time processing pipeline ensures that the dataset remains up-to-date and ready for further analysis and insights extraction. The preprocessing steps include:
+   -  Removing specific columns (e.g., "description", "price", "imageURL") from the dataset.
+   -  Cleaning HTML tags and JavaScript content from text fields.
+   -  Normalizing and preparing the data for storage in MongoDB.
 2. The producerPreprocess.py script serves as a producer application responsible for preprocessing and sending data from a JSON file to a Kafka topic named amazon_data. This script is an essential component of the streaming data processing pipeline, ensuring that raw data is ingested, processed, and made available for analysis in real-time.
 
-## Producer for Algorithm Application
+## Algorithm Implementation
 
-This producer script is dedicated to feeding data for three distinct algorithms – Apriori, PCY, and an innovative algorithm – applied to the Amazon dataset.
+producer.py script is dedicated to feeding data for three distinct algorithms – Apriori, PCY, and an innovative algorithm – applied to the Amazon dataset.
 
 ### Functionality
 
