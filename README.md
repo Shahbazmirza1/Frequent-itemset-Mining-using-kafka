@@ -10,16 +10,26 @@ This repository contains the code and documentation for a streaming data analysi
 
 The Amazon Metadata dataset provides rich information about products, including attributes such as product ID (`asin`), title, features, description, price, image URLs, related products, sales rank, brand, categories, and technical details. The dataset is provided in JSON format.
 
-## Project Objectives
+## Data Preprocessing
+Provided consumer script (consumerPreprocess.py) performs preprocessing and stores the data into a MongoDB database named amazonDB. The preprocessing steps include:
+- Removing specific columns (e.g., "description", "price", "imageURL") from the dataset.
+- Cleaning HTML tags and JavaScript content from text fields.
+- Normalizing and preparing the data for storage in MongoDB.
+The script utilizes a Kafka consumer to ingest data from the amazon_data topic, preprocesses each message, and stores the processed data into MongoDB. This real-time processing pipeline ensures that the dataset remains up-to-date and ready for further analysis and - insights extraction.
+The producerPreprocess.py script serves as a producer application responsible for preprocessing and sending data from a JSON file to a Kafka topic named amazon_data. This script is an essential component of the streaming data processing pipeline, ensuring that raw data is ingested, processed, and made available for analysis in real-time.
 
-1. **Downloading and Sampling the Dataset**: Download the Amazon Metadata dataset, sample it, and preprocess it for analysis.
-2. **Pre-Processing**: Clean and format the sampled data, ensuring it is suitable for streaming and frequent itemset mining.
-3. **Streaming Pipeline Setup**: Develop a producer application to stream preprocessed data in real-time, with three consumer applications subscribing to the data stream.
-4. **Frequent Itemset Mining**:
-   - Implement the Apriori algorithm in one consumer, providing real-time insights and associations.
-   - Implement the PCY algorithm in another consumer, offering real-time insights and associations.
-   - Implement innovative analysis in the third consumer, exploring advanced techniques for extracting insights from streaming data.
-5. **Database Integration**: Integrate with a non-relational database (e.g., MongoDB) to store the results of frequent itemset mining.
+## Producer for Algorithm Application
+
+This producer script is dedicated to feeding data for three distinct algorithms – Apriori, PCY, and an innovative algorithm – applied to the Amazon dataset.
+
+### Functionality
+
+- **Data Source**: Connects to MongoDB to access the Amazon product dataset.
+  
+- **Data Publication**: Publishes extracted data to the Kafka topic for consumption by the algorithm-specific consumers.
+
+Producer serves as the cornerstone for algorithmic analysis on the Amazon dataset, enabling the subsequent application of various algorithms for insights extraction.
+
 
 ## Tools Used
 
