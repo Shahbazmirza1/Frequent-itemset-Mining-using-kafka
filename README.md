@@ -15,8 +15,9 @@ Provided consumer script (consumerPreprocess.py) performs preprocessing and stor
 - Removing specific columns (e.g., "description", "price", "imageURL") from the dataset.
 - Cleaning HTML tags and JavaScript content from text fields.
 - Normalizing and preparing the data for storage in MongoDB.
-The script utilizes a Kafka consumer to ingest data from the amazon_data topic, preprocesses each message, and stores the processed data into MongoDB. This real-time processing pipeline ensures that the dataset remains up-to-date and ready for further analysis and - insights extraction.
-The producerPreprocess.py script serves as a producer application responsible for preprocessing and sending data from a JSON file to a Kafka topic named amazon_data. This script is an essential component of the streaming data processing pipeline, ensuring that raw data is ingested, processed, and made available for analysis in real-time.
+
+1. consumerPreprocess.py utilizes a Kafka consumer to ingest data from the amazon_data topic, preprocesses each message, and stores the processed data into MongoDB. This real-time processing pipeline ensures that the dataset remains up-to-date and ready for further analysis and - insights extraction.
+2. The producerPreprocess.py script serves as a producer application responsible for preprocessing and sending data from a JSON file to a Kafka topic named amazon_data. This script is an essential component of the streaming data processing pipeline, ensuring that raw data is ingested, processed, and made available for analysis in real-time.
 
 ## Producer for Algorithm Application
 
