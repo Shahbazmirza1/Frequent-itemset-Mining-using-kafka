@@ -1,6 +1,6 @@
 # Streaming Data Insights with Frequent Itemset Analysis on Amazon
 
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Overview
 
@@ -60,42 +60,49 @@ The Amazon Metadata dataset provides rich information about products, including 
      bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic processed
      ```
 
-4. **Streaming Pipeline Setup**:
-   - Develop the producer application to stream preprocessed data to Kafka.
-   - Create three consumer applications that subscribe to the Kafka topic.
+4. **Running the Code**:
+   - **Start MongoDB**:
+     ```bash
+     sudo systemctl start mongod
+     ```
 
-5. **Frequent Itemset Mining**:
-   - Implement the Apriori algorithm in one consumer.
-   - Implement the PCY algorithm in another consumer.
-   - Implement innovative analysis in the third consumer.
+   - **Start Zookeeper**:
+     ```bash
+     cd kafka_directory
+     bin/zookeeper-server-start.sh config/zookeeper.properties
+     ```
 
-6. **Database Integration**:
-   - Choose MongoDB or another non-relational database.
-   - Modify each consumer to connect to the database and store the results.
+   - **Start Kafka Server**:
+     ```bash
+     cd kafka_directory
+     bin/kafka-server-start.sh config/server.properties
+     ```
 
-## Running the Code
+   - **Create Kafka Topic**:
+     ```bash
+     cd kafka_directory
+     bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic processed
+     ```
 
-Assuming you have already installed the necessary dependencies and configured your environment:
+   - **Run Producer Application**:
+     ```bash
+     python producer_kafka.py
+     ```
 
-# Producer Application
-```bash
-python producer_kafka.py
-```
+   - **Run Consumer Applications**:
+     ```bash
+     python consumer_apriori.py
+     python consumer_pcy.py
+     python consumer_innovative.py
+     ```
 
-# Consumer Applications
-```bash
-python consumer_apriori.py
-python consumer_pcy.py
-python consumer_innovative.py
-```
+## License
 
-# License
+This project is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0). See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.
-
-# Contributions
+## Contributions
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
 
+---
 This README provides detailed instructions for setting up and running the Streaming Data Insights project with Kafka integration. For additional information, please refer to the project repository.
-
