@@ -6,6 +6,11 @@
 
 This repository contains the code and documentation for a streaming data analysis project focusing on frequent itemset mining applied to Amazon Metadata. The project utilizes advanced algorithms to extract insights and associations from streaming data in real-time.
 
+## Overview
+#### I21-2675
+#### I21-1365
+#### I21-
+
 ## Dataset
 
 The Amazon Metadata dataset provides rich information about products, including attributes such as product ID (`asin`), title, features, description, price, image URLs, related products, sales rank, brand, categories, and technical details. The dataset is provided in JSON format.
@@ -19,15 +24,39 @@ The Amazon Metadata dataset provides rich information about products, including 
 
 ## Algorithm Implementation
 
-producer.py script is dedicated to feeding data for three distinct algorithms – Apriori, PCY, and an innovative algorithm – applied to the Amazon dataset.
+### Apriori Algorithm
 
-### Functionality
+The project employs the classic Apriori algorithm for mining frequent itemsets from streaming data. It iteratively generates candidate itemsets and prunes those that do not meet a minimum support threshold.
 
-- **Data Source**: Connects to MongoDB to access the Amazon product dataset.
-  
-- **Data Publication**: Publishes extracted data to the Kafka topic for consumption by the algorithm-specific consumers.
+#### Approach Overview
 
-Producer serves as the cornerstone for algorithmic analysis on the Amazon dataset, enabling the subsequent application of various algorithms for insights extraction.
+- Iteratively identifies frequent itemsets from the streaming Amazon Metadata dataset.
+- Employs a series of passes to discover frequent itemsets and association rules.
+- Utilizes a sliding window approach to process streaming data efficiently.
+
+#### Implementation Details
+
+- Data is ingested from the Kafka topic `processed`.
+- Transactions are constructed from product information, including associated products and product IDs.
+- Frequent itemsets are generated through multiple passes over the transaction data.
+- Association rules are derived from frequent itemsets, and confidence scores are calculated to measure rule strength.
+
+### PCY Algorithm
+
+The PCY (Park-Chen-Yu) algorithm is a memory-efficient variant of Apriori that utilizes a hash-based counting technique to reduce memory usage.
+
+#### Approach Overview
+
+- Extends Apriori by introducing a hash table to count pairs of items.
+- Operates in two passes over the transaction data to count item pairs and filter candidate itemsets efficiently.
+
+#### Implementation Details
+
+- Counts occurrences of item pairs in the first pass using a hash table.
+- Filters candidate itemsets based on hash table counts in the second pass.
+- Achieves memory efficiency by storing counts in a hash table instead of the entire transaction database.
+
+
 
 
 ## Tools Used
