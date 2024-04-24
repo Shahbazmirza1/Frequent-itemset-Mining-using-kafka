@@ -2,14 +2,28 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Overview
+## Table of Contents
 
-This repository contains the code and documentation for a streaming data analysis project focusing on frequent itemset mining applied to Amazon Metadata. The project utilizes advanced algorithms to extract insights and associations from streaming data in real-time.
+|    | Section                                  |
+|----|------------------------------------------|
+| 1. | [Overview](#overview)                    |
+| 2. | [Contributors](#contributors)            |
+| 3. | [Dataset](#dataset)                      |
+| 4. | [Data Preprocessing](#data-preprocessing)|
+| 5. | [Algorithm Implementation](#algorithm-implementation) |
+| 5.1 | [Apriori Algorithm](#apriori-algorithm) |
+| 5.2 | [PCY Algorithm](#pcy-algorithm)         |
+| 6. | [Tools Used](#tools-used)                |
+| 7. | [Setup Instructions](#setup-instructions)|
+| 8. | [License](#license)                      |
+| 9. | [Contributions](#contributions)          |
+| 10.| [Additional Information](#additional-information) |
+
 
 ## Contributors
-#### I21-2675
+#### I21-2674
 #### I21-1365
-#### I21-
+#### I21-1359
 
 ## Dataset
 
