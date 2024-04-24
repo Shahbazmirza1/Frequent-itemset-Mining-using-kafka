@@ -21,9 +21,11 @@
 
 
 ## Contributors
-#### I21-2674
-#### I21-1365
-#### I21-1359
+
+- **I21-2674 Shahbaz Haider Mirza**
+- **I21-1365 Talha Rashid**
+- **I21-1359 Mirza Nehan**
+
 
 ## Dataset
 
