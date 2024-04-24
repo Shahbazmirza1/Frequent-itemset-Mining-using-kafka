@@ -15,7 +15,7 @@ done; \
 exec bash"
 
 # Wait for 10 seconds before starting Kafka server
-sleep 5
+sleep 10
 
 # Terminal 2: Start Kafka server
 
