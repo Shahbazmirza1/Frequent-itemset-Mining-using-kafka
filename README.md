@@ -6,7 +6,7 @@
 
 This repository contains the code and documentation for a streaming data analysis project focusing on frequent itemset mining applied to Amazon Metadata. The project utilizes advanced algorithms to extract insights and associations from streaming data in real-time.
 
-## Overview
+## Contributors
 #### I21-2675
 #### I21-1365
 #### I21-
