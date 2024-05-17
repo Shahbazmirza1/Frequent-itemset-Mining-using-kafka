@@ -6,10 +6,10 @@ from pymongo import MongoClient
 bootstrap_servers = ['localhost:9092']
 topic = 'amazon_data' 
 
-# Setup MongoDB connection
-client = MongoClient('localhost', 27017)  # Default MongoDB port is 27017
-db = client['amazonDB']  # Create a new database 
-collection = db['products']  # Create a new collection 
+# DB Connection setup
+client = MongoClient('localhost', 27017)  
+db = client['amazonDB']  
+collection = db['products']
 
 def store_in_mongodb(data):
     try:
@@ -26,19 +26,17 @@ def store_in_mongodb(data):
 def remove_html_tags(text):
     """Remove html tags and JavaScript from a string"""
     text = re.sub('<script.*?</script>', '', text, flags=re.DOTALL)  # Remove JavaScript
-    text = re.sub('<style.*?</style>', '', text, flags=re.DOTALL)  # Remove style content
+    text = re.sub('<style.*?</style>', '', text, flags=re.DOTALL)  # Remove style 
     clean_text = re.sub('<.*?>', '', text)  # Remove remaining HTML tags
-    return re.sub('\s+', ' ', clean_text).strip()  # Remove extra spaces and strip
+    return re.sub('\s+', ' ', clean_text).strip() 
 
 
 def preprocess_data(data):
     remove = ["description", "price", "imageURL", "imageURLHighRes", "salesRank", "tech1", "tech2", "categories",'details','image','Average Customer Review','fit','rank','date','similar_item','category']
     
-    # Remove specified columns from the data
     for column in remove:
         data.pop(column, None)
-
-    # Remove HTML from all string fields
+        
     for key, value in data.items():
         if isinstance(value, str):
             data[key] = remove_html_tags(value)
